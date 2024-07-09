@@ -9,57 +9,110 @@
 </head>
 <body style="background-color: #f3ccccc6;">
      <!--  Barra de Navegacion -->
-     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="height: 70px;">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="height: 70px;">
         <div class="container-fluid" style="background-color: #0776ffc6; height: 70px; border: 2.5px black solid; ">
-          <span class="navbar-brand mb-0 h1" href="./interfaces.html" style="font-size: 25px; margin-left: 30px;">INTERFACES</span>
+        <span class="navbar-brand mb-0 h1" href="./interfaces.html" style="font-size: 25px; margin-left: 30px;">INTERFACES</span>
         <div class="collapse navbar-collapse" id="navbarNav">
               
-          <ul class="navbar-nav" style="margin-left: 20px;">
+    <ul class="navbar-nav" style="margin-left: 20px;">
                 <li class="nav-item">
-                  <a class="nav-link" href="../index.html" style="font-size: 20px;">Home Page</a>
+                    <a class="nav-link" href="../index.html" style="font-size: 20px;">Home Page</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../html/cargos.html" style="font-size: 20px;">Cargos</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="../html/ciudades.html" style="font-size: 20px;">Ciudades</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="../html/deportes.html" style="font-size: 20px;">Deportes</a>
-                  </li>
-          </ul>
+                </li>
+      </ul>
         </div>
         </div>
-      </nav>
+  </nav>
 
-      <div class="row justify-content-center" >
-        <div class="col-4" style="border: 2px solid black; border-radius: 20px; margin-top: 40px; background-color: rgb(104, 136, 252);">
-        <h2 class="text-center" style="color: black; margin: 10px;">Datos Personas</h2>
-        
-        <div class="col-6">
-        <label style="color: rgb(0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
-        <select class="form-select" aria-label="Default select example" id="inputselector">
-          <option selected>Seleccione Documento</option>
-          <option value="1">Tarjeta Identidad</option>
-          <option value="2">Cedula Ciudadania</option>
-          <option value="3">Pasaporte</option>
-        </select></div>
-        
+              <!-- INTERFAZ DE FORUMLARIO -->
+               
+<div class="row justify-content-center" style="height: 470px;" >    <!-- Contenedor Padre de todo el foprmulario   -->            
+<div class="col-3" style="border: 2px solid black; border-radius: 20px; margin-top: 40px; background-color: rgb(104, 136, 252);">
+  <div class="container text-center"> <!-- Contenedor padre de la fila-->
+  <div class="row align-items-start"> <!-- Contenedor de clase fila para agregar nuevos campos -->
+    <div class="col" style="margin-top: 40px;">
+      <label style="color: rgb(0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+      <select class="form-select" aria-label="Default select example" id="inputselector">
+        <option selected>Seleccione Documento</option>
+        <option value="1">Tarjeta Identidad</option>
+        <option value="2">Cedula Ciudadania</option>
+        <option value="3">Pasaporte</option>
+      </select> 
+    </div>
+    <div class="col" style="margin-top: 40px;" >
+      <label style="color: rgba(0, 0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Numero Documento">
+    </div>
+  </div>
+  </div>
+  <div class="container text-center"> <!-- Contenedor padre de la fila-->
+    <div class="row align-items-start"> <!-- Contenedor de clase fila para agregar nuevos campos -->
+      <div class="col">
+        <label style="color: rgba(0, 0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombres">
+      </div>
+      <div class="col">
+        <label style="color: rgba(0, 0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Apellidos">
+      </div>
+    </div>
+    </div>
+    <div class="container text-center"> <!-- Contenedor padre de la fila-->
+      <div class="row align-items-start"> <!-- Contenedor de clase fila para agregar nuevos campos -->
+
         <div class="col">
-          <label for="formGroupExampleInput" class="form-label">Example label</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+          <label style="color: rgba(0, 0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dirección" style="margin-bottom: 10px;">
         </div>
-
-
-
-
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">      +
-        <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>
       </div>
       </div>
+      <div class="container text-center" style="margin-bottom: 20px;"> <!-- Contenedor padre de la fila-->
+        <div class="row align-items-start"> <!-- Contenedor de clase fila para agregar nuevos campos -->
+          <div class="col">
+            <label style="color: rgba(0, 0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+            <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Telefono">
+          </div>
+          <div class="col">
+            <label style="color: rgb(0, 0, 0); font-size: 18px;" for="inputselector">Fecha Nacimiento</label>
+            <input type="date" class="form-control" placeholder="Fecha Nacimiento">
+          </div>
+        </div>
+        </div>
+        <div class="container text-center" > <!-- Contenedor padre de la fila-->
+          <div class="row align-items-center" > <!-- Contenedor de clase fila para agregar nuevos campos -->
+            <div class="col"  >
+              <label style="color: rgba(255, 0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+              <button class="btn btn-warning form-control" style="font-size: 20px; border: solid rgba(255, 77, 0, 0.849) 3px; width: 202px;">Cancelar</button>
+            </div>
+            <div class="col">
+              <label style="color: rgba(255, 0, 0, 0); font-size: 18px;" for="inputselector">Tipo de Documento</label>
+              <button class="btn btn-success form-control" style=" font-size: 20px; border: solid rgba(10, 255, 14, 0.811) 3px; width: 202px;" >Guardar</button>
+            </div>
+          </div>
+          </div>
+
+
+
+
+
+
+
+
+</div> <!-- Se cierra el contenedor de fila -->
+</div> <!-- Se cierra el contenedor Padre de todo el Formulario -->
+
+
+
+
+
 
 </body>
 </html>
