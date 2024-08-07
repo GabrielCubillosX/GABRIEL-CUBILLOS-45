@@ -1,74 +1,83 @@
 const productos = [
-    { id: 1, nombre: "Televisor", precio: 570, descuento: 0 },
-    { id: 2, nombre: "Nevera", precio: 1000, descuento: 0 },
-    { id: 3, nombre: "Lavadora", precio: 680, descuento: 0 },
-    { id: 4, nombre: "Computador", precio: 880, descuento: 0 }
-  ];
-  
-  const arrayTabla = [];
-  const selector = document.getElementById("selectorProductos");
-  const tbody = document.querySelector("#tabla tbody");
-  const agregarbtn = document.getElementById("boton");
-  const tabla = document.getElementById("tabla");
-  const descuentoInput = document.getElementById("descuentoInput");
-  
-  function searchselect(event) {
-    event.preventDefault();
-    tabla.style.display = "";
-    const valorSeleccionado = parseInt(selector.value);
-    const producto = productos.find(p => p.id === valorSeleccionado);
-  
-    if (producto) {
-      const descuento = parseFloat(descuentoInput.value) || 0;
-      const valorTotal = calcularTotal(descuento, producto.precio);
-      agregarProducto(producto.id, producto.nombre, producto.precio, descuento, valorTotal);
-  
-      console.log(arrayTabla);
-  
-      // Construir el HTML para todas las filas
-      const filasHTML = arrayTabla.map(item => `
-        <tr data-id="${item.id}">
-          <th>${item.nombre}</th>
-          <td>${item.precio * 1000}</td>
-          <td>${item.descuento}%</td>
-          <td>${item.total}</td>
-          <td><button class="btn btn-danger" onclick="eliminarProducto(${item.id})">Eliminar Producto</button></td>
-        </tr>
-      `).join('');
-  
-      // Insertar todo el HTML en el tbody
-      tbody.innerHTML = filasHTML;
-  
-    } else {
-      alert("Es OBLIGATORIO Seleccionar Un Producto");
-    }
+  { id: 1, nombre: "Televisor", precio: 570, descuento: 0 },
+  { id: 2, nombre: "Nevera", precio: 1000, descuento: 0 },
+  { id: 3, nombre: "Lavadora", precio: 680, descuento: 0 },
+  { id: 4, nombre: "Computador", precio: 880, descuento: 0 }
+]
+
+let arrayTabla = []
+
+function cargarDatos() {
+  const datos = localStorage.getItem('productosGuardados')
+  if (datos) {
+      arrayTabla = JSON.parse(datos) /* CONVIERTE LOS DATOS JSON A UN ARRAY YA ACTUALIZA LA TABLA DE UNA VEZ */
+      actualizarTabla()
   }
-  
-  function calcularTotal(descuento, precio) {
-    return precio - (precio * (descuento / 100));
-  }
-  
-  function agregarProducto(id, nombre, precio, descuento, total) {
-    const productoArray = {
+}
+
+function guardarDatos() {
+  localStorage.setItem('productosGuardados', JSON.stringify(arrayTabla)) /* LOS ARRAY SE CONVIERTEN EN JSON PARA GUARDARLOS EN STORAGE */
+}
+
+const selector = document.getElementById("selectorProductos")
+const tbody = document.querySelector("#tabla tbody")
+const agregarbtn = document.getElementById("boton")
+const descuentoInput = document.getElementById("descuentoInput")
+
+function calcularTotal(descuento, precio) {
+  return precio - (precio * (descuento / 100))
+}
+
+function agregarProducto(id, nombre, precio, descuento, total) {
+  const productoArray = {
       id: id,
       nombre: nombre,
       precio: precio,
       descuento: descuento,
       total: total
-    };
-    arrayTabla.push(productoArray);
   }
+  arrayTabla.push(productoArray)
+  guardarDatos()
+  actualizarTabla()
+}
+
+function eliminarProducto(index) {
+
+  arrayTabla.splice(index, 1)
   
-  function eliminarProducto(id) {
-    // Eliminar el producto del arrayTabla basado en el id
-    const index = arrayTabla.findIndex(item => item.id === id);
-    if (index > -1) {
-      arrayTabla.splice(index, 1);
+
+  guardarDatos()
   
-      // Volver a renderizar la tabla
-      searchselect(new Event('click')); // Simula un clic para actualizar la tabla
-    }
+
+  actualizarTabla()
+}
+
+function actualizarTabla() {
+  const filasHTML = arrayTabla.map((item, index) => `
+      <tr data-id="${item.id}">
+          <td>${item.nombre}</td>
+          <td>${item.precio*1000}</td>
+          <td>${item.descuento}%</td>
+          <td>${item.total*1000}</td>
+          <td><button class="btn btn-danger" onclick="eliminarProducto(${index})">Eliminar Producto</button></td>
+      </tr>
+  `).join('')
+  tbody.innerHTML = filasHTML
+  console.log(arrayTabla)
+}
+function searchselect(event) {
+  event.preventDefault()
+  const valorSeleccionado = parseInt(selector.value)
+  const producto = productos.find(p => p.id === valorSeleccionado)
+
+  if (producto) {
+      const descuento = parseFloat(descuentoInput.value) || 0
+      const valorTotal = calcularTotal(descuento, producto.precio)
+      agregarProducto(producto.id, producto.nombre, producto.precio, descuento, valorTotal)
+  } else {
+      alert("Es OBLIGATORIO Seleccionar Un Producto")
   }
-  
-  agregarbtn.addEventListener("click", searchselect);
-  
+}
+
+agregarbtn.addEventListener("click", searchselect)
+window.onload = cargarDatos
