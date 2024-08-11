@@ -30,7 +30,7 @@ function calcularTotal(descuento, precio) {
 
 function agregarProducto(id, nombre, precio, descuento, total) {
   const productoArray = {
-      id: id,
+      id: id,           
       nombre: nombre,
       precio: precio,
       descuento: descuento,
